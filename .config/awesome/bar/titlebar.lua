@@ -5,17 +5,37 @@ local beautiful = require "beautiful"
 
 local dpi = beautiful.xresources.apply_dpi
 
+function double_click_event_handler(double_click_event)
+	if double_click_timer then
+            double_click_timer:stop()
+            double_click_timer = nil
+            return true
+        end
+    
+        double_click_timer = gears.timer.start_new(0.20, function()
+            double_click_timer = nil
+            return false
+        end)
+end
+
 ----- Titlebar
 local get_titlebar = function(c)
   -- Button
-  local buttons = gears.table.join({
-    awful.button({}, 1, function()
-      c:activate { context = "titlebar", action = "mouse_move" }
-    end),
-    awful.button({}, 3, function()
-      c:activate { context = "titlebar", action = "mouse_resize" }
-    end)
-  })
+    local buttons = gears.table.join(
+      awful.button({ }, 1, function()
+          c:emit_signal("request::activate", "titlebar", {raise = true})
+          if double_click_event_handler() then
+              c.maximized = not c.maximized
+              c:raise()
+          else
+              awful.mouse.client.move(c)
+          end
+      end),
+      awful.button({ }, 3, function()
+          c:emit_signal("request::activate", "titlebar", {raise = true})
+          awful.mouse.client.resize(c)
+      end)
+  )
 
   -- Titlebar's decorations
   local left = wibox.widget {
@@ -52,7 +72,7 @@ local get_titlebar = function(c)
         right,
         layout = wibox.layout.align.horizontal,
       },
-      margins = { top = dpi(12), bottom = dpi(12), left = dpi(10), right = dpi(10) },
+      margins = { top = dpi(9), bottom = dpi(9), left = dpi(10), right = dpi(10) },
       widget = wibox.container.margin,
     },
     widget = container,
@@ -62,7 +82,7 @@ end
 local function top(c)
   local titlebar = awful.titlebar(c, {
     position = 'top',
-    size = dpi(40),
+    size = dpi(32),
   })
 
   titlebar:setup {

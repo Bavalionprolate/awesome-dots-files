@@ -6,24 +6,24 @@ local dpi = beautiful.xresources.apply_dpi
 
 -- Volume
 local volume = wibox.widget.textbox()
-volume.font = "SAGA Heavy 14"
+volume.font = "SF Pro Display Semibold 14"
 
 local percentage = wibox.widget.textbox()
 
 awesome.connect_signal("signal::volume", function(vol, mute)
-	vol = tonumber(vol)
-	if mute or vol == 0 then
-		volume.markup = "<span foreground='"..beautiful.fg_normal.."'>󰸈 </span>"
+  vol = tonumber(vol)
+	if mute or vol == '0' then
+		volume.markup = "<span foreground='"..beautiful.fg_normal.."'> </span>"
 		percentage.markup = "M"
 	else
 		if vol < 20 then
-			volume.markup = "<span foreground='"..beautiful.fg_normal.."'>󰕿 </span>"
+			volume.markup = "<span foreground='"..beautiful.fg_normal.."'> </span>"
 			percentage.markup = vol .. "%"
 		elseif vol < 60 then
-			volume.markup = "<span foreground='"..beautiful.fg_normal.."'>󰖀 </span>"
+			volume.markup = "<span foreground='"..beautiful.fg_normal.."'> </span>"
 			percentage.markup = vol .. "%"
 		else
-			volume.markup = "<span foreground='"..beautiful.fg_normal.."'>󰕾 </span>"
+			volume.markup = "<span foreground='"..beautiful.fg_normal.."'> </span>"
 			percentage.markup = vol .. "%"
 		end
 	end
@@ -43,7 +43,7 @@ end)
 
 launcher:buttons(gears.table.join(
 	awful.button({ }, 1, function()
-		awful.spawn("rofi -show drun", false)
+		awful.spawn.with_shell(rofi, 'false')
 	end)
 ))
 
@@ -104,7 +104,6 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Each screen has its own tag table.
   awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
-
   -- Create an imagebox widget which will contain an icon indicating which layout we're using.
   -- We need one layoutbox per screen.
 

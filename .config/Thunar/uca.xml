@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon></icon>
+	<name>Terminal</name>
+	<unique-id>1670601289369690-1</unique-id>
+	<command>kitty</command>
+	<description></description>
+	<patterns>*</patterns>
+</action>
+</actions>

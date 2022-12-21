@@ -14,7 +14,7 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme.lua")
 terminal = "kitty"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
-web = "flatpak run com.google.Chrome"
+web = "firefox"
 rofi = "rofi -show drun -theme " .. gears.filesystem.get_configuration_dir() .. "theme/rofi.rasi"
 files = "thunar"
 music = "spotify"
@@ -23,7 +23,7 @@ music = "spotify"
 awful.layout.layouts = {
   awful.layout.suit.floating,
   awful.layout.suit.tile,
-}
+} 
 
 -- Menu
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it

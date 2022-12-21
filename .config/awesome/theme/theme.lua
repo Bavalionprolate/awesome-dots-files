@@ -4,24 +4,23 @@ local dpi = xresources.apply_dpi
 local gears = require("gears")
 
 local gfs = require("gears.filesystem")
--- local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
 -- Font
-theme.font = "SAGA Heavy 12"
+theme.font = "SF Pro Display Semibold 10"
 
 -- Colors
-theme.bg_normal   = "#1d2021"
+theme.bg_normal   = "#161616"
 theme.bg_focus    = "#32302f"
-theme.bg_urgent   = "#cc241d"
+theme.bg_urgent   = "#161616"
 theme.bg_minimize = "#282828"
 theme.bg_systray  = theme.bg_normal
 
-theme.fg_normal   = "#ebdbb2"
-theme.fg_focus    = "#ebdbb2"
-theme.fg_urgent   = "#ebdbb2"
-theme.fg_minimize = "#ebdbb2"
+theme.fg_normal   = "#ffffff"
+theme.fg_focus    = "#ffffff"
+theme.fg_urgent   = "#ffffff"
+theme.fg_minimize = "#ffffff"
 
 theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(0)
@@ -89,7 +88,7 @@ theme.titlebar_maximized_button_focus_inactive_hover = titlebar_icon_dir .. "max
 local layout_icon_dir = gfs.get_configuration_dir() .. "/theme/assets/layout/"
 
 theme.layout_floating = gears.color.recolor_image(layout_icon_dir .. "floating.png", theme.fg_normal)
-theme.layout_tile     = gears.color.recolor_image(layout_icon_dir .. "tile.png", theme.fg_normal)
+theme.layout_tile = gears.color.recolor_image(layout_icon_dir .. "tile.png", theme.fg_normal)
 
 -- Systray
 theme.systray_icon_spacing = dpi(10)

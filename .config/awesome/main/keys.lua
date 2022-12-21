@@ -22,10 +22,10 @@ awful.keyboard.append_global_keybindings({
   awful.key({ mod, }, "u", awful.client.urgent.jumpto),
 
   -- Standard program
-  awful.key({ mod, }, "Return", function() awful.spawn(terminal) end),
-  awful.key({ mod, }, "b", function() awful.spawn(web) end),
-  awful.key({ mod, shift }, "b", function() awful.spawn(web .. " --incognito") end),
-  awful.key({ mod, shift }, "f", function() awful.spawn(terminal .. " ranger") end),
+  awful.key({ mod, }, "Return", function() awful.spawn.easy_async(terminal) end),
+  awful.key({ mod, }, "b", function() awful.spawn.easy_async(web) end),
+  awful.key({ mod, shift }, "b", function() awful.spawn.easy_async(web .. " --incognito") end),
+  awful.key({ mod, shift }, "f", function() awful.spawn.easy_async(files) end),
 
   awful.key({ mod, "Control" }, "r", awesome.restart),
   awful.key({ mod, "Control" }, "q", awesome.quit),
@@ -49,7 +49,7 @@ awful.keyboard.append_global_keybindings({
     { description = "restore minimized", group = "client" }),
 
   -- Rofi
-  awful.key({ mod }, "r", function() awful.spawn(rofi) end),
+  awful.key({ mod }, "r", function() awful.spawn.easy_async(rofi) end),
   -- Menubar
   awful.key({ mod }, "p", function() menubar.show() end),
 })
@@ -157,13 +157,13 @@ end)
 awful.keyboard.append_global_keybindings({
 
   -- Volume
-  awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%") end),
-  awful.key({}, "XF86AudioLowerVolume", function() awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%") end),
-  awful.key({}, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end),
+  awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn.easy_async("pactl set-sink-volume @DEFAULT_SINK@ +5%") end),
+  awful.key({}, "XF86AudioLowerVolume", function() awful.spawn.easy_async("pactl set-sink-volume @DEFAULT_SINK@ -5%") end),
+  awful.key({}, "XF86AudioMute", function() awful.spawn.easy_async("pactl set-sink-mute @DEFAULT_SINK@ toggle") end),
 
   -- Media
-  awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
-  awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
-  awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
-  awful.key({}, "XF86AudioStop", function() awful.spawn("playerctl stop") end),
+  awful.key({}, "XF86AudioPlay", function() awful.spawn.easy_async("playerctl play-pause") end),
+  awful.key({}, "XF86AudioNext", function() awful.spawn.easy_async("playerctl next") end),
+  awful.key({}, "XF86AudioPrev", function() awful.spawn.easy_async("playerctl previous") end),
+  awful.key({}, "XF86AudioStop", function() awful.spawn.easy_async("playerctl stop") end),
 })

@@ -7,10 +7,10 @@ configuration {
 }
 
 * {
-    bg: #061115;
-    primary:	#78B892;
-    secondbg: #08151a;
-    alt: #08151a;
+    bg: #161616;
+    primary:	#ffffff;
+    secondbg: #0f0f0f;
+    alt: #0f0f0f;
     rad: 12px;
 
     background-color: @bg;
@@ -19,9 +19,10 @@ configuration {
 
 window {
     children: [ container, mainbox ];
-    padding: 20px 0 0;
-    border-radius: @rad;
+    padding: 0 0 0;
     background-color: @secondbg;
+    width: 800px;
+    height: 450px;
 }
 
 container {
@@ -29,8 +30,8 @@ container {
     orientation: horizontal;
     expand: false;
     background-image: linear-gradient(to bottom, 
-                      #78B892, #78B892, #78B892, #78B892, 
-                      #061115, #061115, #061115, #061115);
+                      #0f0f0f, #0f0f0f, #0f0f0f, #0f0f0f, 
+                      #0f0f0f, #0f0f0f, #0f0f0f, #0f0f0f);
 }
 
 box {

@@ -14,7 +14,11 @@ awful.rules.rules = {
       buttons = clientbuttons,
       screen = awful.screen.preferred,
       placement = awful.placement.no_overlap + awful.placement.no_offscreen
-    }
+    },
+    { floating = true },
+		callback = function (c)
+			awful.placement.centered(c,nil)
+		end
   },
 
   -- Floating clients.

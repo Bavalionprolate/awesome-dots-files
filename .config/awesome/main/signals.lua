@@ -9,8 +9,8 @@ local vol_sc = 'pamixer --get-volume'
 local mute_sc = 'pamixer --get-mute'
 
 local function get_vol()
-	awful.spawn.easy_async_with_shell(vol_sc, function(vol)
-		awful.spawn.easy_async_with_shell(mute_sc, function(mute)
+	awful.spawn.easy_async(vol_sc, function(vol)
+		awful.spawn.easy_async(mute_sc, function(mute)
 			if mute:match("false") then 
 				muted = false
 			else
@@ -23,7 +23,7 @@ local function get_vol()
 end
 	
 gears.timer {
-	timeout = 2,
+	timeout = 0.01,
 	call_now = true,
 	autostart = true,
 	callback = function()
@@ -54,3 +54,4 @@ client.connect_signal("manage", function(c)
   client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
   client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
   -- }}}
+
